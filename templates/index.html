@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload photos de rallye</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Déposez vos photos 📸</h1>
+
+    <!-- Message de confirmation -->
+    {% if success %}
+        <div class="message success">✅ Vos photos ont bien été envoyées !</div>
+    {% endif %}
+
+    {% if error %}
+        <div class="message error">❌ {{ error }}</div>
+    {% endif %}
+
+    <!-- Formulaire -->
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <label for="team_number">Numéro d’équipe :</label>
+        <input type="number" id="team_number" name="team_number" required>
+
+        <label for="team_name">Nom de l’équipe :</label>
+        <input type="text" id="team_name" name="team_name" required>
+
+        <label for="photos">Photos :</label>
+        <input type="file" id="photos" name="photos" accept="image/*" multiple required>
+
+        <button type="submit">Envoyer 🚀</button>
+    </form>
+</div>
+</body>
+</html>
+
