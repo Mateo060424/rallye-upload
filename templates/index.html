@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Envoi des photos - Rallye</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Déposez vos photos 📸</h1>
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+			<label for="equipeNumber">Numéro d’équipe :</label>
+			<input type="text" name="equipeNumber" required><br>
+
+			<label for="equipeName">Nom de l’équipe :</label>
+			<input type="text" name="equipeName" required><br>
+
+			<label for="photos">Photos :</label>
+			<input type="file" name="photos" id="photos" multiple required><br>
+
+			<input type="submit" value="Envoyer les photos">
+		</form>>
+			{% if success %}
+				<div class="message success">✅ Vos photos ont bien été envoyées !</div>
+			{% endif %}
+
+			{% if error %}
+				<div class="message error">❌ {{ error }}</div>
+			{% endif %}
+
+		<p id="message"></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
